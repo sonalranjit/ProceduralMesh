@@ -26,6 +26,7 @@ public class ExampleBasicTriangle : MonoBehaviour {
         normals[0] = Vector3.back; normals[1] = Vector3.back; normals[2] = Vector3.back;
 
         mesh.normals = normals;
+
 	}
 
     [SerializeField] float speed = 90f;
