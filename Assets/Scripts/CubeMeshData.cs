@@ -9,10 +9,10 @@ public static class CubeMeshData {
         new Vector3(-1, 1, 1),
         new Vector3(-1,-1, 1),
         new Vector3( 1,-1, 1),
-        new Vector3(-1, 1, 1),
-        new Vector3( 1, 1, 1),
-        new Vector3( 1,-1, 1),
-        new Vector3(-1,-1, 1)
+        new Vector3(-1, 1, -1),
+        new Vector3( 1, 1, -1),
+        new Vector3( 1,-1, -1),
+        new Vector3(-1,-1, -1)
     };
 
     public static int[][] faceTriangles = {
@@ -24,14 +24,19 @@ public static class CubeMeshData {
         new int[]{3, 2, 7, 6}
     };
 
-    public static Vector3[] faceVertices(int dir)
+    public static Vector3[] faceVertices(int dir, float scale, Vector3 pos)
     {
         Vector3[] fv = new Vector3[4];
         for (int i = 0; i < fv.Length; i++)
         {
-            fv[i] = faceTriangles [dir][i];
+            fv[i] = (vertices[faceTriangles [dir][i]] * scale) + pos;
         }
         return fv;
+    }
+
+    public static Vector3[] faceVertices(Direction dir, float scale, Vector3 pos)
+    {        
+        return faceVertices((int)dir, scale, pos);
     }
 
 }
